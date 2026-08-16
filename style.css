@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #f87171;
+}
+
+/* Grille représentant le sapin */
+.tree-container {
+    display: grid;
+    grid-template-columns: repeat(6, 70px);
+    gap: 15px;
+    justify-content: center;
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #064e3b;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Style d'une case */
+.door {
+    position: relative;
+    height: 70px;
+    background-color: #047857;
+    border: 2px solid #fbbf24;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.door .number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fbbf24;
+}
+
+.door .content {
+    display: none; /* Caché par défaut */
+    font-size: 0.85rem;
+}
+
+/* État verrouillé (date future) */
+.door.locked {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.door.locked .number {
+    color: #9ca3af;
+}
+
+/* État ouvert / déverrouillé */
+.door.open {
+    background-color: #ef4444;
+    border-color: #fef08a;
+}
+
+.door.open .number {
+    display: none; /* Cache le numéro pour laisser place au contenu */
+}
+
+.door.open .content {
+    display: block;
+}
+
+.door.open a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
