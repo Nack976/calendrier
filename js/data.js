@@ -20,7 +20,7 @@
                        la date de déverrouillage automatique
    ============================================================ */
 
-const CALENDAR_YEAR = 2025;
+const CALENDAR_YEAR = 2026;
 
 const CALENDAR_DAYS = [
   { day: 1,  title: "Premier flocon",        description: "Le compte à rebours commence.",         link: "https://example.com/1",  linkText: "Ouvrir" },
