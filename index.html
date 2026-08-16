@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mon calendrier de l'Avent</title>
+<meta name="description" content="Un calendrier de l'Avent interactif et féerique — un petit cadeau chaque jour jusqu'à Noël." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <p class="eyebrow">24 jours de féerie</p>
+    <h1>Mon calendrier de l'Avent</h1>
+    <p>Un petit cadeau chaque jour jusqu'à Noël ✨</p>
+  </header>
+
+  <main class="stage">
+    <div class="tree-wrapper" aria-label="Sapin de Noël décoré des 24 jours du calendrier de l'Avent">
+      <div class="tree-glow" aria-hidden="true"></div>
+
+      <svg viewBox="0 0 500 650" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" class="tree-svg" aria-hidden="true">
+      <defs>
+          <linearGradient id="pineGradA" x1="15%" y1="0%" x2="85%" y2="100%">
+            <stop offset="0%" stop-color="#4faa77"/>
+            <stop offset="55%" stop-color="#1e6b42"/>
+            <stop offset="100%" stop-color="#0e3623"/>
+          </linearGradient>
+          <linearGradient id="pineGradB" x1="15%" y1="0%" x2="85%" y2="100%">
+            <stop offset="0%" stop-color="#59b781"/>
+            <stop offset="55%" stop-color="#237649"/>
+            <stop offset="100%" stop-color="#0f3b26"/>
+          </linearGradient>
+          <radialGradient id="starGlow2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff3d6" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#ffb75e" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="ornGlow" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#ff9d8a"/>
+            <stop offset="55%" stop-color="#c22334"/>
+            <stop offset="100%" stop-color="#7c1220"/>
+          </radialGradient>
+        </defs>
+      <circle cx="250" cy="45" r="50" fill="url(#starGlow2)"/>
+      <path d="M 250.0,55.0 Q 233.1,64.2 237.0,81.2 Q 223.7,90.4 224.0,107.5 Q 207.1,116.7 211.0,133.8 Q 197.7,142.9 198.0,160.0 Q 224.0,164.2 250.0,162.5 Q 276.0,164.2 302.0,160.0 Q 292.9,116.7 289.0,133.8 Q 276.3,90.4 276.0,107.5 Q 266.9,64.2 263.0,81.2 Q 266.9,64.2 250.0,55.0 Z" fill="url(#pineGradB)" stroke="#0a2416" stroke-width="1" stroke-linejoin="round"/>
+      <ellipse cx="223.7" cy="88.4" rx="7.0" ry="3.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="197.7" cy="140.9" rx="7.0" ry="3.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="276.3" cy="88.4" rx="7.0" ry="3.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="302.3" cy="140.9" rx="7.0" ry="3.5" fill="#f4f2ea" opacity="0.9"/>
+      <path d="M 250.0,130.0 Q 223.6,138.8 232.4,155.0 Q 212.2,163.8 214.8,180.0 Q 188.4,188.8 197.2,205.0 Q 177.0,213.8 179.6,230.0 Q 153.2,238.8 162.0,255.0 Q 206.0,260.0 250.0,258.0 Q 294.0,260.0 338.0,255.0 Q 323.0,213.8 320.4,230.0 Q 311.6,188.8 302.8,205.0 Q 287.8,163.8 285.2,180.0 Q 276.4,138.8 267.6,155.0 Q 276.4,138.8 250.0,130.0 Z" fill="url(#pineGradA)" stroke="#0a2416" stroke-width="1" stroke-linejoin="round"/>
+      <ellipse cx="212.2" cy="161.8" rx="8.0" ry="4.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="177.0" cy="211.8" rx="8.0" ry="4.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="276.4" cy="136.8" rx="8.0" ry="4.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="311.6" cy="186.8" rx="8.0" ry="4.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="346.8" cy="236.8" rx="8.0" ry="4.0" fill="#f4f2ea" opacity="0.9"/>
+      <path d="M 250.0,220.0 Q 213.7,228.5 228.7,244.2 Q 201.4,252.6 207.3,268.3 Q 171.1,276.8 186.0,292.5 Q 158.7,301.0 164.7,316.7 Q 128.4,325.1 143.3,340.8 Q 116.0,349.3 122.0,365.0 Q 186.0,370.8 250.0,368.5 Q 314.0,370.8 378.0,365.0 Q 371.6,325.1 356.7,340.8 Q 341.3,301.0 335.3,316.7 Q 328.9,276.8 314.0,292.5 Q 298.6,252.6 292.7,268.3 Q 286.3,228.5 271.3,244.2 Q 286.3,228.5 250.0,220.0 Z" fill="url(#pineGradB)" stroke="#0a2416" stroke-width="1" stroke-linejoin="round"/>
+      <ellipse cx="201.4" cy="250.6" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="158.7" cy="299.0" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="116.0" cy="347.3" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="298.6" cy="250.6" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="341.3" cy="299.0" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="384.0" cy="347.3" rx="9.0" ry="4.5" fill="#f4f2ea" opacity="0.9"/>
+      <path d="M 250.0,330.0 Q 202.4,339.3 222.0,356.7 Q 186.2,366.0 194.0,383.3 Q 146.4,392.7 166.0,410.0 Q 130.2,419.3 138.0,436.7 Q 90.4,446.0 110.0,463.3 Q 74.2,472.7 82.0,490.0 Q 166.0,496.4 250.0,493.8 Q 334.0,496.4 418.0,490.0 Q 409.6,446.0 390.0,463.3 Q 369.8,419.3 362.0,436.7 Q 353.6,392.7 334.0,410.0 Q 313.8,366.0 306.0,383.3 Q 297.6,339.3 278.0,356.7 Q 297.6,339.3 250.0,330.0 Z" fill="url(#pineGradA)" stroke="#0a2416" stroke-width="1" stroke-linejoin="round"/>
+      <ellipse cx="186.2" cy="364.0" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="130.2" cy="417.3" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="74.2" cy="470.7" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="313.8" cy="364.0" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="369.8" cy="417.3" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="425.8" cy="470.7" rx="10.0" ry="5.0" fill="#f4f2ea" opacity="0.9"/>
+      <path d="M 250.0,445.0 Q 193.5,453.2 220.3,468.6 Q 178.4,476.8 190.6,492.1 Q 134.1,500.4 160.9,515.7 Q 119.0,524.0 131.1,539.3 Q 74.7,547.5 101.4,562.9 Q 59.5,571.1 71.7,586.4 Q 15.3,594.7 42.0,610.0 Q 146.0,616.6 250.0,614.0 Q 354.0,616.6 458.0,610.0 Q 440.5,571.1 428.3,586.4 Q 425.3,547.5 398.6,562.9 Q 381.0,524.0 368.9,539.3 Q 365.9,500.4 339.1,515.7 Q 321.6,476.8 309.4,492.1 Q 306.5,453.2 279.7,468.6 Q 306.5,453.2 250.0,445.0 Z" fill="url(#pineGradB)" stroke="#0a2416" stroke-width="1" stroke-linejoin="round"/>
+      <ellipse cx="178.4" cy="474.8" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="119.0" cy="522.0" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="59.5" cy="569.1" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="306.5" cy="451.2" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="365.9" cy="498.4" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="425.3" cy="545.5" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <ellipse cx="484.7" cy="592.7" rx="11.0" ry="5.5" fill="#f4f2ea" opacity="0.9"/>
+      <circle cx="210" cy="150" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="208" cy="148" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="295" cy="175" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="293" cy="173" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="185" cy="255" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="183" cy="253" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="320" cy="270" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="318" cy="268" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="230" cy="340" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="228" cy="338" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="300" cy="360" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="298" cy="358" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="170" cy="400" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="168" cy="398" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="330" cy="420" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="328" cy="418" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="200" cy="470" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="198" cy="468" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="310" cy="480" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="308" cy="478" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <circle cx="250" cy="520" r="7" fill="url(#ornGlow)" stroke="#4a0f16" stroke-width="0.6"/>
+      <circle cx="248" cy="518" r="2" fill="#ffd9cf" opacity="0.7"/>
+      <path d="M 234,600 L 266,600 L 262,636 L 238,636 Z" fill="#4a2f1c"/>
+      <path d="M 234,600 L 266,600 L 264,614 L 236,614 Z" fill="#5c3a22"/>
+      <path d="M250,8 L257,27 L277,27 L261,39 L267,58 L250,46 L233,58 L239,39 L223,27 L243,27 Z" fill="#f3d999" stroke="#c99a3f" stroke-width="1"/>
+      </svg>
+
+      <div class="lights" id="lights" aria-hidden="true"></div>
+
+      <div class="ornaments" id="ornaments"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Cliquez sur une case dorée pour l'ouvrir. Les cases verrouillées s'ouvriront à leur date.</p>
+  </footer>
+
+  <!-- Toast pour les cases verrouillées -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Modal de contenu du jour -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+      <p class="modal-day" id="modal-day">Jour</p>
+      <h2 id="modal-title">Titre</h2>
+      <p id="modal-desc">Description</p>
+      <a href="#" id="modal-link" class="modal-link" target="_blank" rel="noopener">Découvrir</a>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
